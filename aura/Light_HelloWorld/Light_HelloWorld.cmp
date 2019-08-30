@@ -1,0 +1,11 @@
+<aura:component 
+                implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" 
+                access="global" >
+    <aura:attribute name="message" type="string" default = "Test me"/>
+    <div>
+        <p>Hello and Welcome to Learning Lightning!
+        	</p>
+        {!v.message}
+    </div>
+	
+</aura:component>

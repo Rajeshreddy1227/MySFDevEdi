@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Invoice</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Invoices</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Account__c</name>
+        <relationshipLabel><!-- Invoices --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Billing Country --></label>
+        <name>Billing_Country__c</name>
+    </fields>
+    <fields>
+        <help><!-- Contact --></help>
+        <label><!-- Contact --></label>
+        <name>Contact__c</name>
+        <relationshipLabel><!-- Invoices --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- ExternalId --></label>
+        <name>ExternalId__c</name>
+    </fields>
+    <fields>
+        <help><!-- Invoice created date in the invoice system. --></help>
+        <label><!-- InvoiceDate --></label>
+        <name>InvoiceDate__c</name>
+    </fields>
+    <fields>
+        <help><!-- This is notes of Invoice --></help>
+        <label><!-- Notes --></label>
+        <name>Notes__c</name>
+    </fields>
+    <fields>
+        <help><!-- Current status of Invoice! --></help>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Draft</masterLabel>
+            <translation><!-- Draft --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Invoiced</masterLabel>
+            <translation><!-- Invoiced --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Overdue</masterLabel>
+            <translation><!-- Overdue --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Paid</masterLabel>
+            <translation><!-- Paid --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Sub-Status --></label>
+        <name>Sub_Status__c</name>
+        <picklistValues>
+            <masterLabel>Contacted Final</masterLabel>
+            <translation><!-- Contacted Final --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contacted Once</masterLabel>
+            <translation><!-- Contacted Once --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In-review</masterLabel>
+            <translation><!-- In-review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legal Pending</masterLabel>
+            <translation><!-- Legal Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Total Price --></label>
+        <name>Total_Price__c</name>
+    </fields>
+    <layouts>
+        <layout>Clone Invoice Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Notes --></label>
+            <section>Notes</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Invoice Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Notes --></label>
+            <section>Notes</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label><!-- Inv_RT_1 --></label>
+        <name>Inv_RT_1</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Invoice Date cannot be future Date --></errorMessage>
+        <name>Date_Cannot_be_previous_Date</name>
+    </validationRules>
+    <workflowTasks>
+        <name>Sent_for_Approval</name>
+        <subject><!-- Sent for Approval --></subject>
+    </workflowTasks>
+</CustomObjectTranslation>

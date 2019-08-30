@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>This is a basic core Action Send email-Intro to flow!</description>
+        <name>Send_Email</name>
+        <label>Send Email</label>
+        <locationX>404</locationX>
+        <locationY>256</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <connector>
+            <targetReference>Loop_through_all_the_contacts_for_the_account</targetReference>
+        </connector>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>EmailtemplateBosy</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>curRecord.Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>rajeshreddy1227@gmail.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>This is the subject of the flow!</stringValue>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <description>Loops through all the contacts of an account</description>
+    <interviewLabel>Looping Lessaons- Account to Contact Looping {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Looping Lessaons- Account to Contact Looping</label>
+    <loops>
+        <description>This loops through all the contacts for the given account</description>
+        <name>Loop_through_all_the_contacts_for_the_account</name>
+        <label>Loop through all the contacts for the account</label>
+        <locationX>402</locationX>
+        <locationY>37</locationY>
+        <assignNextValueToReference>curRecord</assignNextValueToReference>
+        <collectionReference>accContacts</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Send_Email</targetReference>
+        </nextValueConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>This gets record from Contact sObjectc</description>
+        <name>Get_Contact_Record</name>
+        <label>Get Account Contact Records</label>
+        <locationX>209</locationX>
+        <locationY>52</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Loop_through_all_the_contacts_for_the_account</targetReference>
+        </connector>
+        <filters>
+            <field>AccountId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>001f200001njuiYAAQ</stringValue>
+            </value>
+        </filters>
+        <object>Contact</object>
+        <outputReference>accContacts</outputReference>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>FirstName</queriedFields>
+        <queriedFields>LastName</queriedFields>
+        <queriedFields>Email</queriedFields>
+        <queriedFields>Birthdate</queriedFields>
+    </recordLookups>
+    <startElementReference>Get_Contact_Record</startElementReference>
+    <status>Draft</status>
+    <textTemplates>
+        <name>EmailtemplateBosy</name>
+        <text>This is what we know about you.
+Your name is {!curRecord.FirstName} {!curRecord.LastName}.
+Your DOB: {!curRecord.Birthdate}.</text>
+    </textTemplates>
+    <variables>
+        <description>This stores all the contacts for the given account</description>
+        <name>accContacts</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Contact</objectType>
+    </variables>
+    <variables>
+        <description>This holds current Record</description>
+        <name>curRecord</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Contact</objectType>
+    </variables>
+</Flow>

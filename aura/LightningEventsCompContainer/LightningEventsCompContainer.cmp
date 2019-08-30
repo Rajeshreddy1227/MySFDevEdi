@@ -1,0 +1,17 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name = "totalIncome" type="decimal" default="0"></aura:attribute>
+    
+    <!--name should be same as name of the registered component and event should be the name of the lightning event -->
+ <!--   <aura:handler name="TotalIncomeCompEvent" event="c:LightningCompEvent" action="{!c.handleTotalIncomeCompEventouter}"/> -->
+    <!--Capture phase-->
+    <aura:handler name="TotalIncomeCompEvent" event="c:LightningCompEvent" action="{!c.handleTotalIncomeCompEventouter}" phase="capture"/>
+    
+      outer Component   
+    <div class="innercomponent">
+        Inner component section begin
+     <c:LightningEventsComp1 />
+        Inner component section end
+    </div>
+    <span class="totalIncome">TotalIncome={!v.totalIncome}</span>
+   
+</aura:component>

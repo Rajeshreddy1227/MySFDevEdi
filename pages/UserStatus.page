@@ -1,0 +1,19 @@
+<apex:page >
+    <h1>
+        User Status
+    </h1>
+    <apex:pageBlock title="UserStatus">
+        <apex:pageBlockSection columns="1">
+            {!$User.FirstName} {!$User.LastName}
+            ({!$User.UserName})
+            <p>
+                Today is {!Today()}
+            </p>
+            <p>Is it true?  {! CONTAINS('salesforce.com', 'force.com') }</p>
+            <p>
+                {!if(contains('sales','sa'),'y','n')}
+                {!IF( CONTAINS('salesforce.com','force.com'), 'Yep', 'Nope') }
+            </p>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>

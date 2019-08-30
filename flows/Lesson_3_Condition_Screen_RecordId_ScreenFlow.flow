@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>This is a basic core Action Send email-Intro to flow!</description>
+        <name>Send_Email</name>
+        <label>Send Email</label>
+        <locationX>404</locationX>
+        <locationY>256</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <connector>
+            <targetReference>Loop_through_all_the_contacts_for_the_account</targetReference>
+        </connector>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>EmailtemplateBosy</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>curRecord.Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>rajeshreddy1227@gmail.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>This is the subject of the flow!</stringValue>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <decisions>
+        <name>SendOnlyToTransportation</name>
+        <label>SendOnlyToTransportation</label>
+        <locationX>46</locationX>
+        <locationY>344</locationY>
+        <defaultConnector>
+            <targetReference>label1</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>TrasnportationIndustry</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>currAccountInd</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Transportation</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Contact_Record</targetReference>
+            </connector>
+            <label>TrasnportationIndustry</label>
+        </rules>
+    </decisions>
+    <description>This flow captures the record id from the page where its invoked through a button and conditionally sends emails. This is a Screen Flow</description>
+    <interviewLabel>Lesson 3- Condition-Screen-RecordId-ScreenFlow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Lesson 3- Condition-Screen-RecordId-ScreenFlow</label>
+    <loops>
+        <description>This loops through all the contacts for the given account</description>
+        <name>Loop_through_all_the_contacts_for_the_account</name>
+        <label>Loop through all the contacts for the account</label>
+        <locationX>402</locationX>
+        <locationY>37</locationY>
+        <assignNextValueToReference>curRecord</assignNextValueToReference>
+        <collectionReference>accContacts</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Send_Email</targetReference>
+        </nextValueConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordLookups>
+        <description>This gets the details of the account detail</description>
+        <name>AccountRec</name>
+        <label>AccountRec</label>
+        <locationX>51</locationX>
+        <locationY>191</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>SendOnlyToTransportation</targetReference>
+        </connector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <object>Account</object>
+        <outputAssignments>
+            <assignToReference>currAccountInd</assignToReference>
+            <field>Industry</field>
+        </outputAssignments>
+    </recordLookups>
+    <recordLookups>
+        <description>This gets record from Contact sObjectc</description>
+        <name>Get_Contact_Record</name>
+        <label>Get Account Contact Records</label>
+        <locationX>237</locationX>
+        <locationY>95</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Loop_through_all_the_contacts_for_the_account</targetReference>
+        </connector>
+        <filters>
+            <field>AccountId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <object>Contact</object>
+        <outputReference>accContacts</outputReference>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>FirstName</queriedFields>
+        <queriedFields>LastName</queriedFields>
+        <queriedFields>Email</queriedFields>
+        <queriedFields>Birthdate</queriedFields>
+    </recordLookups>
+    <screens>
+        <description>This is just a label</description>
+        <name>label1</name>
+        <label>send email only to non-industry customers.</label>
+        <locationX>263</locationX>
+        <locationY>357</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>display1</name>
+            <fieldText>You can only send emails to non-industry customers.</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <startElementReference>AccountRec</startElementReference>
+    <status>Active</status>
+    <textTemplates>
+        <name>EmailtemplateBosy</name>
+        <text>This is what we know about you.
+Your name is {!curRecord.FirstName} {!curRecord.LastName}.
+Your DOB: {!curRecord.Birthdate}.</text>
+    </textTemplates>
+    <variables>
+        <description>This stores all the contacts for the given account</description>
+        <name>accContacts</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Contact</objectType>
+    </variables>
+    <variables>
+        <name>currAccountInd</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>This holds current Record</description>
+        <name>curRecord</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Contact</objectType>
+    </variables>
+    <variables>
+        <description>This holds the record id</description>
+        <name>recordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

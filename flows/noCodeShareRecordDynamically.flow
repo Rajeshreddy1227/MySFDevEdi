@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This flow is called from process builder to create a record in sharing table to share records dynamically(conditionally)</description>
+    <interviewLabel>noCodeShareRecordDynamically {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>noCodeShareRecordDynamically</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>InsertRecinPrivateObjectShare</name>
+        <label>InsertRecinPrivateObjectShare</label>
+        <locationX>220</locationX>
+        <locationY>80</locationY>
+        <inputAssignments>
+            <field>AccessLevel</field>
+            <value>
+                <stringValue>Edit</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>ParentId</field>
+            <value>
+                <elementReference>privateObjectId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>RowCause</field>
+            <value>
+                <stringValue>nocodeshare_Dynamically__c</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>UserOrGroupId</field>
+            <value>
+                <elementReference>privateObjectShareWith</elementReference>
+            </value>
+        </inputAssignments>
+        <object>PrivateObject__Share</object>
+    </recordCreates>
+    <startElementReference>InsertRecinPrivateObjectShare</startElementReference>
+    <status>Active</status>
+    <variables>
+        <description>This is coming from Process Builder on Private object</description>
+        <name>privateObjectId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <description>This variable holds the value coming from process builder and says whom to share the record with.</description>
+        <name>privateObjectShareWith</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>

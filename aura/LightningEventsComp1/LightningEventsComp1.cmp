@@ -1,0 +1,38 @@
+<aura:component >
+    <!--For data table-->
+    <aura:attribute name="incomes" type="Object" />
+    <aura:attribute name = "myColumns" type = "List" />
+    
+    <!--for events-->
+    <aura:registerEvent name="TotalIncomeCompEvent" type="c:LightningCompEvent"></aura:registerEvent>
+   <!-- <aura:handler name = "TotalIncomeCompEvent" event="c:LightningCompEvent" action="{!c.handleRegesteredComponentEvent}"></aura:handler> -->
+    
+    <!--Capture Phase-->
+    <aura:handler name = "TotalIncomeCompEvent" event="c:LightningCompEvent" action="{!c.handleRegesteredComponentEvent}" phase="capture"></aura:handler>
+    
+    <!--Component handler-->
+    <aura:handler name = "init" value="{!this}" action = "{!c.doInit}" />
+    
+    <!--Lightning Card and a data table inside it-->
+    <Lightning:card title="Income Calculator" iconName = "standard:account" >
+        <aura:set attribute="actions">
+            <lightning:button label="show/Hide form" onclick="{!c.toggleIncomeForm}"></lightning:button>
+         </aura:set>
+        <p Class="slds-p-horizontal_small">
+            <div aura:id="IncomeForm" class="hide">
+                <lightning:input aura:id="source" name="source" required="true" label="Income Source"></lightning:input>
+                <lightning:input aura:id="amount" name="amount" required="true" label="Amount"></lightning:input>
+                <br />
+                <lightning:button name="addIncome" label = "Add Income" variant="brand" onclick="{!c.addIncome}"></lightning:button>
+            </div>
+            <br />
+                       
+            <lightning:datatable
+                keyField="sno"
+                data="{! v.incomes }"
+                columns="{! v.myColumns }" />
+                
+            <lightning:button name="calculate" label="Calculate Income" variant="brand" onclick="{!c.fireTotalIncomeComponentEvent}"></lightning:button>
+        </p>
+    </Lightning:card>
+</aura:component>

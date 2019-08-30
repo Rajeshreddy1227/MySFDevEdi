@@ -1,0 +1,10 @@
+.THIS {
+}
+
+.THIS.innercomponent{
+    border: 1px solid Blue;
+}
+.THIS.totalIncome{
+    font-size:1.5em;
+    padding-left: 1em;
+}

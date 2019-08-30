@@ -1,0 +1,8 @@
+<aura:documentation>
+	<aura:description>
+        This is the Description of the document coming form description markup!
+    </aura:description>
+	<aura:example name="RegistrationForm" ref="c:RegComp" label="RegistrationFormLabel">
+		This is the example description coming from example markup!
+	</aura:example>
+</aura:documentation>

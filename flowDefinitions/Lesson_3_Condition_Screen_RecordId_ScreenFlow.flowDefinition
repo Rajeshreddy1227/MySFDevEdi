@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionNumber>1</activeVersionNumber>
+    <description>This flow captures the record id from the page where its invoked through a button and conditionally sends emails. This is a Screen Flow</description>
+    <masterLabel>Lesson 4- Condition-Screen-RecordId-ScreenFlow</masterLabel>
+</FlowDefinition>

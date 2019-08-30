@@ -1,0 +1,7 @@
+Hello {!Opportunity.OwnerLastName},
+
+You have a Opty close due tomorrow.
+https://na53.salesforce.com/{!Opportunity.Id}
+
+Thanks,
+SalesSupporty.

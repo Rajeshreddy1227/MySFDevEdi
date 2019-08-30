@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PrivateObject</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PrivateObjects</value>
+    </caseValues>
+    <fields>
+        <label><!-- CreatedDate --></label>
+        <name>CreatedDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- POName --></label>
+        <name>POName__c</name>
+    </fields>
+    <fields>
+        <label><!-- sharewith --></label>
+        <name>sharewith__c</name>
+        <relationshipLabel><!-- PrivateObjects --></relationshipLabel>
+    </fields>
+    <sharingReasons>
+        <label><!-- codeAPEXManagedSharing --></label>
+        <name>codeAPEXManagedSharing</name>
+    </sharingReasons>
+    <sharingReasons>
+        <label><!-- nocodeshare_Dynamically --></label>
+        <name>nocodeshare_Dynamically</name>
+    </sharingReasons>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

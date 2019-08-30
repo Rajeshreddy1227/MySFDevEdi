@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AuthProvider xmlns="http://soap.sforce.com/2006/04/metadata">
+    <executionUser>rajeshreddy1227@gmail.com</executionUser>
+    <friendlyName>Facebook</friendlyName>
+    <iconUrl>https://login.salesforce.com/icons/facebook-white.png</iconUrl>
+    <includeOrgIdInIdentifier>false</includeOrgIdInIdentifier>
+    <providerType>Facebook</providerType>
+    <registrationHandler>AutocreatedRegHandler1549572636052</registrationHandler>
+    <sendAccessTokenInHeader>false</sendAccessTokenInHeader>
+    <sendClientCredentialsInHeader>false</sendClientCredentialsInHeader>
+</AuthProvider>

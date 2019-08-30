@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MatchingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <matchingRules>
+        <fullName>Custom_Contact_Dup_Record_matching_rule</fullName>
+        <booleanFilter>1 OR ( 2 AND 3)</booleanFilter>
+        <label>Custom Contact Dup Record matching rule</label>
+        <matchingRuleItems>
+            <blankValueBehavior>NullNotAllowed</blankValueBehavior>
+            <fieldName>Email</fieldName>
+            <matchingMethod>Exact</matchingMethod>
+        </matchingRuleItems>
+        <matchingRuleItems>
+            <blankValueBehavior>NullNotAllowed</blankValueBehavior>
+            <fieldName>FirstName</fieldName>
+            <matchingMethod>Exact</matchingMethod>
+        </matchingRuleItems>
+        <matchingRuleItems>
+            <blankValueBehavior>NullNotAllowed</blankValueBehavior>
+            <fieldName>LastName</fieldName>
+            <matchingMethod>Exact</matchingMethod>
+        </matchingRuleItems>
+        <ruleStatus>Active</ruleStatus>
+    </matchingRules>
+    <matchingRules>
+        <fullName>MyDupRule_Contacts_matching_rule</fullName>
+        <booleanFilter>1 OR (2 AND 3)</booleanFilter>
+        <label>MyDupRule_Contacts matching rule</label>
+        <matchingRuleItems>
+            <blankValueBehavior>NullNotAllowed</blankValueBehavior>
+            <fieldName>Email</fieldName>
+            <matchingMethod>Exact</matchingMethod>
+        </matchingRuleItems>
+        <matchingRuleItems>
+            <blankValueBehavior>NullNotAllowed</blankValueBehavior>
+            <fieldName>FirstName</fieldName>
+            <matchingMethod>FirstName</matchingMethod>
+        </matchingRuleItems>
+        <matchingRuleItems>
+            <blankValueBehavior>NullNotAllowed</blankValueBehavior>
+            <fieldName>LastName</fieldName>
+            <matchingMethod>LastName</matchingMethod>
+        </matchingRuleItems>
+        <ruleStatus>Active</ruleStatus>
+    </matchingRules>
+</MatchingRules>

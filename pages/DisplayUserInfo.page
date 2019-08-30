@@ -1,0 +1,12 @@
+<apex:page >
+    <apex:pageBlock title="Display Username">
+        <apex:pageBlockSection title="Username">
+            <p>
+                {!$User.Username}
+            </p>
+            <P>
+                FirstName:{!$User.FirstName}
+            </P>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>

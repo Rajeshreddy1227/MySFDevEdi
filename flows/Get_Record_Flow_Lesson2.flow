@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>This is a basic core Action Send email-Intro to flow!</description>
+        <name>Send_Email</name>
+        <label>Send Email</label>
+        <locationX>391</locationX>
+        <locationY>59</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>EmailtemplateBosy</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>curRecord.Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>rajeshreddy1227@gmail.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>This is the subject of the flow!</stringValue>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <description>This flow gets the record from Contact</description>
+    <interviewLabel>Get Record Flow Lesson2 {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Get Record Flow Lesson2</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>This gets record from Contact sObjectc</description>
+        <name>Get_Contact_Record</name>
+        <label>Get Contact Record</label>
+        <locationX>168</locationX>
+        <locationY>55</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Send_Email</targetReference>
+        </connector>
+        <filters>
+            <field>FirstName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>FirstN</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>LastName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>LastN</stringValue>
+            </value>
+        </filters>
+        <object>Contact</object>
+        <outputReference>curRecord</outputReference>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>MobilePhone</queriedFields>
+        <queriedFields>FirstName</queriedFields>
+        <queriedFields>LastName</queriedFields>
+        <queriedFields>Email</queriedFields>
+        <queriedFields>Birthdate</queriedFields>
+        <queriedFields>HomePhone</queriedFields>
+    </recordLookups>
+    <startElementReference>Get_Contact_Record</startElementReference>
+    <status>Draft</status>
+    <textTemplates>
+        <name>EmailtemplateBosy</name>
+        <text>This is what we know about you.
+Your name is {!curRecord.FirstName} {!curRecord.LastName}.
+Your DOB: {!curRecord.Birthdate}.</text>
+    </textTemplates>
+    <variables>
+        <description>This holds current Record</description>
+        <name>curRecord</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Contact</objectType>
+    </variables>
+</Flow>

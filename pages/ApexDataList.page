@@ -1,0 +1,7 @@
+<apex:page standardController="Contact" recordSetVar="contacts">
+
+        <apex:dataList value="{!contacts}" var="ct">
+			{!ct.FirstName}
+        </apex:dataList>
+
+</apex:page>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flexiPageRegions>
+        <componentInstances>
+            <componentName>Light_HelloWorld</componentName>
+        </componentInstances>
+        <componentInstances>
+            <componentName>LTNG_DataTableDemo</componentName>
+        </componentInstances>
+        <componentInstances>
+            <componentName>Demo</componentName>
+        </componentInstances>
+        <name>main</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    <masterLabel>DemoApp</masterLabel>
+    <template>
+        <name>flexipage:defaultAppHomeTemplate</name>
+    </template>
+    <type>AppPage</type>
+</FlexiPage>

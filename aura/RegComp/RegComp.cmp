@@ -1,0 +1,51 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name = "Name" type = "string" default = "" />
+    <aura:attribute name = "class" type = "string[]" default="['First','second','Third']"/>
+    <aura:attribute name = "Age" type = "string" default="" />
+    <aura:attribute name ="Agree" type = "Boolean" default = "false" />
+    <aura:attribute name = "classIP" type ="string" default=""/>
+    <aura:attribute name = "testattr" type="string" default="false"/>
+    <aura:attribute name = "checkedBox" type="Boolean" default="false"/>
+    <!--Calling attribute at component level-->
+    value of Test attribute is: "{!v.testattr}"
+    
+		<div class="slds-m-top_small">
+        <div class="slds-align_absolute-center" style="height: 4rem; font-size:20px;">
+        Registration Form
+            </div></div>
+    
+        <div class="slds-col slds-size_4-of-12">
+   
+                <lightning:input type="string" name="Name" label="Name:" value="{!v.Name}" />
+                <lightning:input type="string" name="Age" label="Age:" value="{!v.Age}" />
+                <lightning:select name="class" label="Class:" value="{!v.classIP}">
+                    
+               <!--     <option value="">choose one...</option>
+                    <option value="1">one</option>
+                    <option value="2">two</option>
+                    <option value="3">three</option>
+   				-->
+                    <aura:iteration items="{!v.class}" var="classiteration">
+                        <option text="{!classiteration}" value="{!classiteration}"></option>    
+                    </aura:iteration>
+                    
+                </lightning:select>            
+                <lightning:input aura:id = "checkboxid" type="checkbox" onchange="{!c.onClickCheckBox}" name="Agree"  label = "Agree?:" checked="{!v.Agree}"/>
+            
+            <aura:if isTrue="{!v.Agree}">
+                <p>Are you sure?</p>
+                <aura:set attribute="else">
+                  False
+                </aura:set>                
+            </aura:if> <br></br>
+            
+            <aura:if isTrue="{!v.checkedBox}">
+                <p>I am coming from Helper class.</p>
+                <aura:set attribute="else">
+                  False
+                </aura:set>
+                 </aura:if> <br></br>
+            <!--IMPORTANT CALLING CONTROLLER,Eye the syntax for calling controller function-->
+                <lightning:button variant="brand" label="Submit"  onclick="{!c.doSubmit}"/>
+        </div>
+</aura:component>

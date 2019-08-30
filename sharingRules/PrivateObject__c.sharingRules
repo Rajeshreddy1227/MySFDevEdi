@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingOwnerRules>
+        <fullName>CEOs_to_CFOs</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>CEOs to CFOs</label>
+        <sharedTo>
+            <role>CFO</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>CEO</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+</SharingRules>

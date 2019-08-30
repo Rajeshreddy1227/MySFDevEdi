@@ -1,0 +1,8 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <H1>Hello Rajesh</H1>
+
+    <div>Welcome to lightning!  </div>
+    <!-- defining the attribute -->
+    <aura:attribute name = "appattr" type = "string" default = "Hello"></aura:attribute>
+    {!v.appattr} 
+</aura:component>

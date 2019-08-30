@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AutoResponseRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <autoResponseRule>
+        <fullName>CaseAutoResponse1</fullName>
+        <active>true</active>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.Type</field>
+                <operation>equals</operation>
+                <value>Electronic</value>
+            </criteriaItems>
+            <replyToEmail>rajeshreddy1227@gmail.com</replyToEmail>
+            <senderEmail>rajeshreddy1227@gmail.com</senderEmail>
+            <senderName>Shiva K</senderName>
+            <template>Rajesh/caseescalation</template>
+        </ruleEntry>
+    </autoResponseRule>
+    <autoResponseRule>
+        <fullName>caseautoresponse</fullName>
+        <active>false</active>
+    </autoResponseRule>
+</AutoResponseRules>

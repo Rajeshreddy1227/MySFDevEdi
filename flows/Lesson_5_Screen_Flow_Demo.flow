@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <choices>
+        <name>Department</name>
+        <choiceText>Marketing</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Marketing</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Sales</name>
+        <choiceText>Sales</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Sales</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Service</name>
+        <choiceText>Service</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Service</stringValue>
+        </value>
+    </choices>
+    <description>Demos multiple ways screen flow accepts and Processes input from the flow.</description>
+    <dynamicChoiceSets>
+        <description>Enter the lead sorce from contact Lead Source Pick List</description>
+        <name>LeadSource</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true"/>
+        <object xsi:nil="true"/>
+        <picklistField>LeadSource</picklistField>
+        <picklistObject>Contact</picklistObject>
+    </dynamicChoiceSets>
+    <formulas>
+        <name>Today</name>
+        <dataType>Date</dataType>
+        <expression>{!$System.OriginDateTime}</expression>
+    </formulas>
+    <interviewLabel>Lesson 5: Screen Flow Demo {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Lesson 5: Screen Flow Demo</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordUpdates>
+        <description>Updates the data in Contact</description>
+        <name>Update_Contact</name>
+        <label>Update Contact</label>
+        <locationX>381</locationX>
+        <locationY>34</locationY>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Department</field>
+            <value>
+                <elementReference>Pick_the_Department</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Description</field>
+            <value>
+                <elementReference>Select_the_Date_you_pu_this_data_in</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>LeadSource</field>
+            <value>
+                <elementReference>Select_Lead_Source</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <screens>
+        <name>Screen_Flows_Demo</name>
+        <label>Screen Flows Demo</label>
+        <locationX>188</locationX>
+        <locationY>49</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Update_Contact</targetReference>
+        </connector>
+        <fields>
+            <name>Select_Lead_Source</name>
+            <choiceReferences>LeadSource</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Select Lead Source</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Pick_the_Department</name>
+            <choiceReferences>Department</choiceReferences>
+            <choiceReferences>Sales</choiceReferences>
+            <choiceReferences>Service</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Pick the Department</fieldText>
+            <fieldType>RadioButtons</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Select_the_Date_you_pu_this_data_in</name>
+            <dataType>Date</dataType>
+            <defaultValue>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </defaultValue>
+            <fieldText>Select the Date you pu this data in.</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <startElementReference>Screen_Flows_Demo</startElementReference>
+    <status>Draft</status>
+    <variables>
+        <name>recordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

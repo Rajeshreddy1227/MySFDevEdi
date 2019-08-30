@@ -1,0 +1,6 @@
+<aura:documentation>
+	<aura:description>This is the documentation for my components in Rajesh K</aura:description>
+	<aura:example name="Registrationform" ref="c:rajesh_comp_regForm" label="registration component">
+		This is ex description
+	</aura:example>
+</aura:documentation>

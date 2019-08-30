@@ -1,0 +1,8 @@
+.THIS {
+}
+.THIS.slds-col{
+  margin: auto;
+  width: 30%;
+  border: 3px ;/* solid rgb(0, 112, 210);*/
+  padding: 10px;
+}

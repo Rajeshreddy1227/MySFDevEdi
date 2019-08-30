@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>This is a basic core Action Send email-Intro to flow!</description>
+        <name>Send_Email</name>
+        <label>Send Email</label>
+        <locationX>211</locationX>
+        <locationY>50</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <stringValue>This is the body of the flow</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <stringValue>rajeshreddy1227@gmail.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>rajeshreddy1227@gmail.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>This is the subject of the flow!</stringValue>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <description>This is the basic flow with core action send email!</description>
+    <interviewLabel>Basic Flow Core Action Email {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Basic Flow Core Action Email</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <startElementReference>Send_Email</startElementReference>
+    <status>Draft</status>
+</Flow>

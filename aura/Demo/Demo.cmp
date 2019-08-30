@@ -1,0 +1,37 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" controller="fetchAccounts_DataTabDemo" access="global" >
+    <aura:attribute name= "test" type= "string" default = "Welcome" />
+    
+    <aura:attribute type="Account[]" name = "acctList"></aura:attribute>
+    <aura:attribute type="List" name = "myColumns"></aura:attribute>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.fetchAccount}"/>
+    
+	{!v.test}
+     <lightning:input name="input1" label="Enter some text" value = "{!v.test}" />
+    
+     <lightning:input type="date" name="input1" label="Enter a date" />
+    <lightning:select name="select1" label="How many tickets?" required="true" >
+        <option value="">choose one...</option>
+        <option value="1">one</option>
+        <option value="2">two</option>
+        <option value="3">three</option>
+    </lightning:select>
+   
+    <lightning:card footer="Card Footer" title="Account">
+        <aura:set attribute="actions">
+            <lightning:button label="New"/>
+            
+        </aura:set>    
+    <lightning:datatable
+        data="{!v.acctList}"
+        columns="{!v.myColumns}"
+        keyField="id">
+    <!--    hideCheckBoxColumn="true"> -->
+    </lightning:datatable>
+    </lightning:card>
+    
+    
+    <lightning:button label = "ClickMe" name = "demo" variant = "brand" onclick="{!c.click}"/>
+     <lightning:button label = "TapMe" name = "demo" variant = "brand" onclick="{!c.tap}"/>
+    
+</aura:component>

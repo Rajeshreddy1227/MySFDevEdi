@@ -1,0 +1,17 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" controller="fetchAccounts_DataTabDemo" access="global" >
+	<aura:attribute type="Account[]" name = "acctList"></aura:attribute>
+    <aura:attribute type="List" name = "myColumns"></aura:attribute>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.fetchAccount}"/>
+ <lightning:card footer="Card Footer" title="Account">
+        <aura:set attribute="actions">
+            <lightning:button label="New"/>
+        </aura:set>    
+    <lightning:datatable
+        data="{!v.acctList}"
+        columns="{!v.myColumns}"
+        keyField="id"
+        hideCheckBoxColumn="false">
+    </lightning:datatable>
+    </lightning:card>
+</aura:component>

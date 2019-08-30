@@ -1,0 +1,6 @@
+<aura:documentation>
+	<aura:description>This is the example of the application component</aura:description>
+	<aura:example name="ExampleName" ref="c:rajesh_comp_regForm.cmp" label="Registration comp">
+		Example Description
+	</aura:example>
+</aura:documentation>
