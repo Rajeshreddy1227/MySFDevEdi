@@ -6,7 +6,7 @@ public class AccessModifiersDemo {
     {
      	salary = i;
         empname = s;
-        system.debug('EmpName:'+empname+'Salary is:'+salary);
+        system.debug('EmpName:'+empname+'Salary is==>:'+salary);
     }
     public static void setDataDemo(integer i1,string s1)
     {
