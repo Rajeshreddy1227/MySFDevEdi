@@ -8,7 +8,6 @@ public class AccessModifiersDemo {
         empname = s;
         system.debug('Git changes==>EmpName:==>'+empname+'Salary is==>:'+salary);
         system.debug("I am in Git feature branch1");
-
     }
     public static void setDataDemo(integer i1,string s1)
     {
